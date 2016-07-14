@@ -1,0 +1,50 @@
+@import '../bower_components/bootstrap/scss/bootstrap';
+
+.navbar-brand {
+  float: none;
+  display: block;
+}
+.navbar-nav .nav-item {
+  float: none;
+}
+
+.navbar-nav .nav-item + .nav-item {
+  margin-left: 0;
+}
+
+@include media-breakpoint-up(sm) {
+
+  .navbar-brand {
+    float: left;
+  }
+  .navbar-nav .nav-item {
+    float: left;
+  }
+
+  .navbar-nav .nav-item + .nav-item {
+    margin-left: 1rem;
+  }
+
+}
+
+.jumbotron {
+  background: url(http://i.imgur.com/QMPaqfu.jpg);
+  background-size: 100%;
+  background-position: 0px -270px;
+}
+
+
+.page-content {
+  table {
+    @extend .table;
+    @extend .table-striped;
+  }
+}
+
+
+
+
+
+#__bs_notify__ {
+  display: none !important;
+}

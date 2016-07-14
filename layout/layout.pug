@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    meta(charset='utf-8')
+    != css('css/style.css')
+    title=config.title
+  body
+    nav.navbar.navbar-dark.bg-primary.navbar-full
+      button.navbar-toggler.hidden-sm-up.pull-xs-right(data-toggle='collapse', data-target='#navbar') &#9776;
+      a.navbar-brand(href='/') Sofies Någonting
+      .collapse.navbar-toggleable-xs#navbar
+        ul.nav.navbar-nav
+          - for (var i in theme.menu)
+            - var url = url_for(theme.menu[i])
+            li.nav-item(class=is_active(url) ? 'active' : undefined)
+              a.nav-link(href=url)=i
+
+    div !{body}
+
+
+    script(src='/bower_components/jquery/dist/jquery.min.js')
+    script(src='/bower_components/tether/dist/js/tether.min.js')
+    script(src='/bower_components/bootstrap/dist/js/bootstrap.min.js')
+    script(src='/js/price.js')
