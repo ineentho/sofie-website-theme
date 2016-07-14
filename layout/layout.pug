@@ -4,22 +4,40 @@ html
     meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
     meta(charset='utf-8')
     != css('css/style.css')
-    title=config.title
+    != css('fontello/css/fontello.css')
+    title=page.title + ' - ' + config.title
   body
+    script(src='/bower_components/jquery/dist/jquery.min.js')
+    script(src='/js/price.js')
     nav.navbar.navbar-dark.bg-primary.navbar-full
       button.navbar-toggler.hidden-sm-up.pull-xs-right(data-toggle='collapse', data-target='#navbar') &#9776;
-      a.navbar-brand(href='/') Sofies Någonting
+      a.navbar-brand(href='/') SK Djur & Traktor
       .collapse.navbar-toggleable-xs#navbar
         ul.nav.navbar-nav
+          li.nav-item.dropdown.pull-sm-right
+            a.nav-link.dropdown-toggle(data-toggle='dropdown', href='#')
+              i.icon-wrench
+              span#pricemode Privatperson
+            .dropdown-menu.dropdown-menu-right
+                a.dropdown-item(href='#', data-pricemode='private') Privatperson (priser inkl. moms)
+                a.dropdown-item(href='#', data-pricemode='business') Företagare (priser exkl. moms)
           - for (var i in theme.menu)
             - var url = url_for(theme.menu[i])
             li.nav-item(class=is_active(url) ? 'active' : undefined)
               a.nav-link(href=url)=i
 
+
     div !{body}
 
+    footer.footer
+      .container.text-muted
+        | &copy; Sofie Karlsson
+        .spacer
+        a(href='#')
+          i.icon-facebook
+          | SK Djur & Traktor
 
-    script(src='/bower_components/jquery/dist/jquery.min.js')
+    script.
+      loadSite()
     script(src='/bower_components/tether/dist/js/tether.min.js')
     script(src='/bower_components/bootstrap/dist/js/bootstrap.min.js')
-    script(src='/js/price.js')

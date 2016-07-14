@@ -1,11 +1,14 @@
 /* global $ */
 
 (function () {
-  var $priceElements = $('[data-price]')
+  var IS_PRIVATE = 'isPrivate'
 
-  window.toggleVAT = function (inclusive) {
+  function toggleVAT (inclusive) {
+    var $priceElements = $('[data-price]')
+    var $pricemode = $('#pricemode')
+    var $includingVat = $('[data-including-vat]')
+
     $priceElements.each(function (i, elem) {
-
       var price = parseInt($(elem).attr('data-price'))
 
       if (inclusive) {
@@ -14,7 +17,20 @@
 
       $(elem).text(price + ':-')
     })
+
+    $pricemode.text(inclusive ? 'Privatperson' : 'Företagare')
+    $includingVat.text(inclusive ? 'inklusive moms' : 'exklusive moms')
   }
 
-  toggleVAT(true)
+  window.loadSite = function () {
+    console.log('load site')
+    $('[data-pricemode]').on('click', function () {
+      var isPrivate = $(this).attr('data-pricemode') === 'private'
+
+      toggleVAT(isPrivate)
+      window.localStorage.setItem(IS_PRIVATE, JSON.stringify(isPrivate))
+    })
+
+    toggleVAT(JSON.parse(window.localStorage.getItem(IS_PRIVATE)))
+  }
 })()
