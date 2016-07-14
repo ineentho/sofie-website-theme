@@ -12,7 +12,7 @@
         price *= 1.25
       }
 
-      $(elem).text(price + ' kr')
+      $(elem).text(price + ':-')
     })
   }
 
