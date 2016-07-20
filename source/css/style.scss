@@ -37,9 +37,12 @@ body {
 }
 
 .jumbotron {
-  background: url(http://i.imgur.com/QMPaqfu.jpg);
-  background-size: 100%;
-  background-position: 0px -270px;
+  background: url(/bilder/header.jpg);
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  background-position: center;
+  background-color: #ccc;
+  border-radius: 0;
 }
 
 .page-content {

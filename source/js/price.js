@@ -1,6 +1,6 @@
 /* global $ */
 
-(function () {
+;(function () {
   var IS_PRIVATE = 'isPrivate'
 
   function toggleVAT (inclusive) {
@@ -30,6 +30,10 @@
       toggleVAT(isPrivate)
       window.localStorage.setItem(IS_PRIVATE, JSON.stringify(isPrivate))
     })
+
+    if (window.localStorage.getItem(IS_PRIVATE) === null) {
+      window.localStorage.setItem(IS_PRIVATE, JSON.stringify(true))
+    }
 
     toggleVAT(JSON.parse(window.localStorage.getItem(IS_PRIVATE)))
   }
