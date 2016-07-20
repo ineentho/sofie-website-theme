@@ -42,13 +42,23 @@ body {
   background-position: 0px -270px;
 }
 
+.page-content {
+  margin-top: 20px;
+}
+
 
 .page-content {
   table {
     @extend .table;
     @extend .table-striped;
   }
+
+  img {
+    @extend .img-fluid;
+    @extend .img-rounded;
+  }
 }
+
 
 .footer {
   position: absolute;
