@@ -15,6 +15,8 @@
         price *= 1.25
       }
 
+      price = Math.round(price)
+
       $(elem).text(price + ':-')
     })
 
